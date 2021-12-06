@@ -1,0 +1,39 @@
+<template>
+<div>
+  <div v-if="!started">
+    <v-input></v-input>
+    <v-btn v-if="!started" @click="start">start</v-btn>
+  </div>
+  <svg v-else width="600" height="600">
+    <SquareCellComp v-for="c in cells" :cell="c" @open="c.open()" :key="c.key()">
+    </SquareCellComp>
+  </svg>
+</div>
+</template>
+
+<script lang="ts">
+
+import { Component, Prop } from 'vue-property-decorator';
+import {Square} from "@/model/Square"
+//import {Cell} from "@/model/Cell"
+import {SquareCell} from "@/model/SquareCell"
+import SquareCellComp from "@/components/SquareCellComp.vue"
+
+
+@Component({})
+export default class Board extends Oya<Square>{
+    started:boolean = false;
+    cells: SquareCell[] = [];
+    created(){
+	this.cells = [];
+	const size:number = 10;
+	for (let i:number=0; i<size; i++ ){
+	    for (let j:number=0; j<size; j++){
+		this.cells.push(new SquareCell(0, false, false, {x:i,y:j}));
+	    }
+	}
+    }
+    //cell = new SquareCell(0,false,false,{x:0,y:0});
+}
+
+</script>

@@ -1,0 +1,17 @@
+import {Square} from "./Square"
+import {Cell} from "./Cell"
+
+export class SquareCell extends Cell<Square>{
+    constructor(num: number, opend:boolean, bomb:boolean, pos:Square){
+	super(num,opend,bomb,pos);
+    }
+    adjacent(a: Cell<Square>): boolean{
+	return (Math.abs(this.pos.x-a.pos.x) + Math.abs(this.pos.y-a.pos.y))==1;
+    }
+    path():string{
+	return "M " + (20*this.pos.x).toString(10) + " " + (20*this.pos.y).toString(10) +" l 20 0 l 0 20 l -20 0 z"
+    }
+    key():string{
+	return this.pos.x + ", " + this.pos.y;
+    }
+}

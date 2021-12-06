@@ -1,0 +1,21 @@
+<template>
+  <div>
+    <h1> TypeScript Test </h1>
+    <triangleboard></triangleboard>
+  </div>
+</template>
+
+<script lang="ts">
+    import { Vue, Component, Prop } from 'vue-property-decorator';
+import squareboard from "@/components/SquareBoard.vue";
+import hexagonboard from "@/components/HexagonBoard.vue";
+import triangleboard from "@/components/TriangleBoard.vue";
+
+export default Vue.extend({
+    components:{
+	hexagonboard,
+	squareboard,
+	triangleboard
+    }
+})
+</script>

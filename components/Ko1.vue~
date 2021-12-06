@@ -1,0 +1,18 @@
+<template>
+<div>
+  {{conf}}
+</div>
+</template>
+
+<script lang="ts">
+
+import { Component } from 'vue-property-decorator';
+import Oya from './Oya';
+
+@Component({})
+export default class Ko1 extends Oya{
+
+    
+}
+
+</script>

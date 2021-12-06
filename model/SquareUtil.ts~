@@ -1,0 +1,9 @@
+import Square from "@/model/Square";
+
+export const SquareUtil: Util<Square>{
+
+    adjacent(a: Square, b: Square){
+	return true;
+    }
+
+}

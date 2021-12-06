@@ -1,0 +1,22 @@
+<template>
+  <path v-for="c in cells" :d="c.path()" fill="white" stroke="black"></path>
+</template>
+
+<script lang="ts">
+
+import { Component, Prop } from 'vue-property-decorator';
+import Oya from './Oya';
+import {Square} from "@/model/Square"
+import {Cell} from "@/model/Cell"
+import {SquareCell} from "@/model/SquareCell"
+
+
+@Component({})
+export default class SquareCell extends Cell<Square>{
+    started:boolean = false;
+    cells = [new SquareCell(0,false,false,{x:0,y:0}),
+	     new SquareCell(0,false,false,{x:1,y:1}),
+	    ];
+}
+
+</script>

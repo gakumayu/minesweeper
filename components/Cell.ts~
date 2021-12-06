@@ -1,0 +1,17 @@
+import { Component, Vue } from 'vue-property-decorator'
+import {Cell} from "@/model/Cell"
+
+@Component
+export default class Oya<T> extends Vue{
+    cells: Cell<T>[] = [];
+    started: boolean = false;
+
+    start():void{
+	this.started = true;
+	console.log("start", this.started);
+    }
+
+    mounted(){
+	console.log("Oya");
+    }
+}

@@ -1,0 +1,9 @@
+import { Component, Vue } from 'vue-property-decorator'
+
+@Component
+export default class Oya extends Vue{
+
+    mounted(){
+	console.log("Oya");
+    }
+}
