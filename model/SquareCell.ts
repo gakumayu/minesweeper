@@ -18,8 +18,8 @@ export class SquareCell extends Cell<Square>{
     transform():string{
 	const x = this.pos.x;
 	const y = this.pos.y;
-	let str: string = "translate(" + (20*x).toString(10)
-	    + "," + (20*y).toString(10) +")";
+	let str: string = "translate(" + (450+20*x).toString(10)
+	    + "," + (200+20*y).toString(10) +")";
 	return str;
     }
     color():string{

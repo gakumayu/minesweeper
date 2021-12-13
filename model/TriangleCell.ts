@@ -20,10 +20,6 @@ export class TriangleCell extends Cell<Triangle>{
 	const r = 20/Math.sqrt(3)
 	if(this.pos.d==1){
 	    return "M "
-	/*	+ " 10 " + (10/Math.sqrt(3)).toString()
-		+ " L 0 " + (-20/Math.sqrt(3)).toString()
-		+ " L -10 " + (10/Math.sqrt(3)).toString() */
-
 		+(r*Math.cos(Math.PI/2)).toString() + " " + (-r*Math.sin(Math.PI/2)).toString()
 		+ " L " + (r*(Math.cos(Math.PI/2+2*Math.PI/3))).toString() + " " + (-r*(Math.sin(Math.PI/2+2*Math.PI/3))).toString()
 		+ " L " + (r*(Math.cos(Math.PI/2+2*2*Math.PI/3))).toString() + " " + (-r*(Math.sin(Math.PI/2+2*2*Math.PI/3))).toString()
@@ -34,20 +30,6 @@ export class TriangleCell extends Cell<Triangle>{
 		+ (r*(Math.cos(Math.PI/2+2*2*Math.PI/3))).toString() + " " + (-r*(Math.sin(Math.PI/2+2*2*Math.PI/3))).toString()
 		+ " l 10 " + (-10*Math.sqrt(3)).toString()
 		+ " l -20 0  Z "
-	    
-	    /*	+ " 10 " + (10/Math.sqrt(3)).toString()
-		+ " l " + (10*Math.cos(-Math.PI/6)).toString() + " " + (-10+10*Math.sin(-Math.PI/6)).toString()
-		+ " l " + (-2*10).toString() + " 0 " */
-	    
-		/*	+ " 10 " + (10/Math.sqrt(3)).toString()
-		+ " L 0 " + (10/Math.sqrt(3)).toString()
-		+ " L -10 " + (10/Math.sqrt(3)).toString()
-		+" Z " */
-
-	    /*	+(10*Math.cos(Math.PI/3)).toString() + " " + (10*Math.sin(Math.PI/3)).toString()
-		+ " L " + (10*(Math.cos(Math.PI/3)+Math.cos(1*2*Math.PI/3))).toString() + " " + (10*(Math.sin(Math.PI/3)+Math.sin(1*2*Math.PI/3))).toString()
-		+ " L " + (10*(Math.cos(Math.PI/3)+Math.cos(2*2*Math.PI/3))).toString() + " " + (10*(Math.sin(Math.PI/3)+Math.sin(2*2*Math.PI/3))).toString()
-		+ " Z " */
 	}
     }
     key():string{
@@ -56,8 +38,8 @@ export class TriangleCell extends Cell<Triangle>{
     transform():string{
 	const x = +this.pos.x;
 	const y = +this.pos.y;
-	const u = 100+20*x+10*y
-	const v = 200-y*20*Math.sin(Math.PI/3)
+	const u = 470+20*x+10*y
+	const v = 400-y*20*Math.sin(Math.PI/3)
 	let str: string = "translate(" + u.toString(10)
 	    + "," + v.toString(10) +")";
 	return str;

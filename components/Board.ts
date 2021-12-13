@@ -9,6 +9,7 @@ export default class Board<T> extends Vue{
 
     start():void{
 	this.started = true;
+	this.gameover = false;
 	this.setNumOfNeiBomb();
 	console.log("start", this.started);
     }

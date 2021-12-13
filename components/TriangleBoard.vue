@@ -7,7 +7,7 @@
   <div v-else>
     <h1 v-if="gameover">game over</h1>
     <h1 v-if="cleared()">clear</h1>
-    <svg v-else width="600" height="600">
+    <svg v-else width="1000" height="1000">
       <TriangleCellComp v-for="c in cells" :cell="c" @mark="mark(c)" @open="open(c)" :key="c.key()">
       </TriangleCellComp>
     </svg>
@@ -27,14 +27,14 @@ import TriangleCellComp from "@/components/TriangleCellComp.vue"
 export default class TriangleBoard extends Board<Triangle>{
     //started:boolean = false;
     cells: TriangleCell[] = [];
-    @Prop({default:10}) propSize: number
+    @Prop({default:10}) propSize!: number;
     created(){
 	this.cells = [];
 	const size:number = this.propSize;
 	for (let i=0; i<=size; i++ ){
 	    for (let j=0; j<=size; j++){
 		if(i+j>=-size && i+j<=size){
-		    if (Math.random() < 0.1){
+		    if (Math.random() < 0.25){
 			this.cells.push(new TriangleCell(0, false, true, false, {x:i,y:j,d:1}));
 		    }
 		    else{
@@ -46,7 +46,7 @@ export default class TriangleBoard extends Board<Triangle>{
 	for (let i=0; i<size; i++ ){ 
 	    for (let j=0; j<size; j++){
 		if(i+j<size){
-		    if (Math.random() < 0.1){
+		    if (Math.random() < 0.25){
 			this.cells.push(new TriangleCell(0, false, true, false, {x:i,y:j,d:-1}));
 		    }
 		    else{
@@ -55,6 +55,7 @@ export default class TriangleBoard extends Board<Triangle>{
 		}
 	    } 
 	}
+	this.start();
     }
     @Watch('propSize')
     onSizeChanged(newSize:number, oldSize:number){
@@ -63,7 +64,7 @@ export default class TriangleBoard extends Board<Triangle>{
 	for (let i=0; i<=size; i++ ){
 	    for (let j=0; j<=size; j++){
 		if(i+j>=-size && i+j<=size){
-		    if (Math.random() < 0.1){
+		    if (Math.random() < 0.25){
 			this.cells.push(new TriangleCell(0, false, true, false, {x:i,y:j,d:1}));
 		    }
 		    else{
@@ -75,7 +76,7 @@ export default class TriangleBoard extends Board<Triangle>{
 	for (let i=0; i<size; i++ ){ 
 	    for (let j=0; j<size; j++){
 		if(i+j<size){
-		    if (Math.random() < 0.1){
+		    if (Math.random() < 0.25){
 			this.cells.push(new TriangleCell(0, false, true, false, {x:i,y:j,d:-1}));
 		    }
 		    else{
@@ -84,6 +85,7 @@ export default class TriangleBoard extends Board<Triangle>{
 		}
 	    } 
 	}
+	this.start();
     }
 }
 

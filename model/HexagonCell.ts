@@ -30,8 +30,8 @@ export class HexagonCell extends Cell<Hexagon>{
     transform():string{
 	const x = +this.pos.x;
 	const y = +this.pos.y;
-	const u = 300+(x+y)*20*Math.cos(Math.PI/6)
-	const v = 200+(x-y)*20*Math.sin(Math.PI/6)
+	const u = 580+(x+y)*20*Math.cos(Math.PI/6)
+	const v = 300+(x-y)*20*Math.sin(Math.PI/6)
 	let str: string = "translate(" + u.toString(10)
 	    + "," + v.toString(10) +")";
 	return str;

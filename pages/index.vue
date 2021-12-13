@@ -51,7 +51,7 @@
           <v-list-item
             v-for="(item, i) in items"
             :key="i"
-	    @click="select('square',i)"
+	    @click="select('square',2*(i+1))"
             >
             <v-list-item-title>{{ item.title }}</v-list-item-title>
           </v-list-item>
@@ -77,7 +77,7 @@
           <v-list-item
             v-for="(item, i) in items"
             :key="i"
-	    @click="select('hexagon',i)"
+	    @click="select('hexagon',2*(1+i))"
             >
             <v-list-item-title>{{ item.title }}</v-list-item-title>
           </v-list-item>
@@ -86,13 +86,13 @@
     </v-row>
   </v-container>
   <triangleboard v-if="game.shape=='triangle'" :propSize="game.level"></triangleboard>
-  <squareboard v-if="game.shape=='square'"></squareboard>
-  <hexagonboard v-if="game.shape=='hexagon'"></hexagonboard>
+  <squareboard v-if="game.shape=='square'" :propSize="game.level"></squareboard>
+  <hexagonboard v-if="game.shape=='hexagon'" :propSize="game.level"></hexagonboard>
 </div>
 </template>
 
 <script>
-    import { Vue, Component, Prop } from 'vue-property-decorator';
+import { Vue, Component, Prop } from 'vue-property-decorator';
 import squareboard from "@/components/SquareBoard.vue";
 import hexagonboard from "@/components/HexagonBoard.vue";
 import triangleboard from "@/components/TriangleBoard.vue";
@@ -112,6 +112,9 @@ export default{
             { title: 'Level 2' },
             { title: 'Level 3' },
             { title: 'Level 4' },
+	    { title: 'Level 5' },
+	    { title: 'Level 6' },
+	    { title: 'Level 7' },
 	],
 	game: { shape: 'square' , level: 1}
     }),

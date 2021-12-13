@@ -6,7 +6,8 @@
   </div>
   <div v-else>
     <h1 v-if="gameover">game over</h1>
-    <svg width="600" height="600">
+    <h1 v-if="cleared()">clear</h1>
+    <svg width="1000" height="1000">
       <SquareCellComp v-for="c in cells" :cell="c" @open="open(c)" @mark="mark(c)" :key="c.key()">
       </SquareCellComp>
     </svg>
@@ -16,7 +17,7 @@
 
 <script lang="ts">
     
-    import { Component, Prop } from 'vue-property-decorator';
+    import { Component, Prop ,Watch} from 'vue-property-decorator';
 import Board from './Board';
 import {Square} from "@/model/Square"
 import {SquareCell} from "@/model/SquareCell"
@@ -26,12 +27,13 @@ import SquareCellComp from "@/components/SquareCellComp.vue"
 export default class SauareBoard extends Board<Square>{
     //started:boolean = false;
     cells: SquareCell[] = [];
+    @Prop({default:10}) propSize!: number;
     created(){
 	this.cells = [];
-	const size:number = 10;
+	const size:number = this.propSize;
 	for (let i=0; i<=size; i++){
 	    for (let j=0; j<=size; j++){
-		if (Math.random() < 0.1){
+		if (Math.random() < 0.25){
 		    this.cells.push(new SquareCell(0, false, true, false, {x:i,y:j}));
 		}
 		else{
@@ -39,7 +41,23 @@ export default class SauareBoard extends Board<Square>{
 		}
 	    }
 	}
+	this.start();
+    }
+    @Watch('propSize')
+    onSizeChanged(newSize:number, oldSize:number){
+	this.cells = [];
+	const size:number = this.propSize;
+	for (let i=0; i<=size; i++){
+	    for (let j=0; j<=size; j++){
+		if (Math.random() < 0.25){
+		    this.cells.push(new SquareCell(0, false, true, false, {x:i,y:j}));
+		}
+		else{
+		    this.cells.push(new SquareCell(0, false, false, false, {x:i,y:j}));
+		}
+	    }
+	}
+	this.start();
     }
 }
-
 </script>
